@@ -1,6 +1,8 @@
 import express  from 'express'
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import authRoute from "./routes/auth.js"
+
 const app = express()
 dotenv.config()
 
@@ -20,9 +22,13 @@ mongoose.connection.on("connecté", () => {
 })
 
 //envois d'une requête
+/*
 app.get("/users", (req, res) => {
     res.json("Hello boubacar barry ma 1ère requête ")
 })
+*/
+//Middleware
+app.use("/gw/auth", authRoute);
 
 
 app.listen(8800, () => {
