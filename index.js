@@ -12,6 +12,18 @@ const connect = async () => {
         throw error;
     }
 };
+mongoose.connection.on("déconnecté", () => {
+    console.log("mongoDB déconnecté!")
+})
+mongoose.connection.on("connecté", () => {
+    console.log("mongoDB connecté!")
+})
+
+//envois d'une requête
+app.get("/users", (req, res) => {
+    res.json("Hello boubacar barry ma 1ère requête ")
+})
+
 
 app.listen(8800, () => {
     connect()
